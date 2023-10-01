@@ -8,12 +8,33 @@
 </head>
 <body>
     <section class="screen">
-        <div class="menu m1">
-
-        </div>
+        <ul class="menu">
+            <li><h1>Space Pirates</h1></li>
+            <li><h2>Level 0</h2></li>
+            <li class="healthBar">
+                <img src="./assets/health.png" alt="health-bar1" class="h1" height="50px" width="50px">
+                <img src="./assets/health.png" alt="health-bar2" class="h2" height="50px" width="50px">
+                <img src="./assets/health.png" alt="health-bar3" class="h3" height="50px" width="50px">
+                <img src="./assets/health.png" alt="health-bar4" class="h4" height="50px" width="50px">
+                <img src="./assets/health.png" alt="health-bar5" class="h5" height="50px" width="50px">
+               </li>
+            <li><button>Pause</button></li>
+            <li><button>Restart</button></li>
+            <li><button>Exit</button></li>
+            
+        </ul>
         <div class="game-container">
-            <div class="space-ship"></div>
-            <div class="background"></div>
+            
+            <div class="background">
+                <div class="space-ship">
+                    <div class="enemy">
+                        <img src="./assets/eship.png" alt="" height="150px" width="300px">
+                    </div>
+                    <div class="alia">
+                        <img src="./assets/ship1.png" alt="My ship" height="150px" width="300px">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <script src="./index.js" charset="UTF-8"></script>

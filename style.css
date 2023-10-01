@@ -21,6 +21,43 @@ margin: 0;
     background-size: cover;
     animation: moveBackground 5s linear infinite;
 }
-.screen>.m1{
+.screen>.menu{
     background-color: black;
+    margin: 0;
+    color: gold;
+    list-style: none;
+}
+
+.screen .enemy{
+    transform: rotate(180deg);
+}
+.screen .menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 5vh;
+    padding: 10px;
+
+}
+.screen h1{
+    font-size: 3vw;
+}
+.screen h2{
+    font-size: 2vw;
+}
+.screen .healthBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.screen>.menu>li>button{
+    background-color: black;
+    color: gold;
+    font-size: 2vw;
+    border-radius: 25px;
+}
+.screen>.menu>li>button :hover{
+    background-color: gold;
+    color: black;
 }
