@@ -1,0 +1,26 @@
+body{
+    overflow: hidden;
+}
+.screen{
+display: grid;
+grid-template-columns: 1fr 4fr;
+grid-template-rows: 1fr;
+gap: 0;
+margin: 0;
+}
+
+.screen>.game-container{
+    height: 100vh;
+}
+.screen>.game-container>.background{
+    width: 80vw;
+    height: 100%;
+    position: absolute;
+    background-image: url('./assets/back1.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
+    animation: moveBackground 5s linear infinite;
+}
+.screen>.m1{
+    background-color: black;
+}
