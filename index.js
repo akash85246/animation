@@ -47,3 +47,32 @@ document.addEventListener('keydown', (event) => {
     spaceship.style.left = spaceshipX + 'px';
     spaceship.style.top = spaceshipY + 'px';
 });
+// for enemy movement
+var speed =1;
+function moveEnemyShipDown(shipId) {
+    const enemyShip = document.getElementById(shipId);
+    let currentPosition = 0; 
+
+    const animationInterval = setInterval(() => {
+        currentPosition += speed; 
+        enemyShip.style.transform = `translateY(${currentPosition}px)`;
+
+        if (currentPosition >= window.innerHeight) {
+            clearInterval(animationInterval);
+            enemyShip.style.transform = 'translateY(0)';
+            moveEnemyShipDown(shipId);
+        }
+    }, 20); 
+}
+
+function moveEnemyShipDownWithRandomDelay(shipId) {
+    setTimeout(() => {
+        moveEnemyShipDown(shipId);
+    }, Math.random() * 30000); 
+}
+moveEnemyShipDownWithRandomDelay('eship1');
+moveEnemyShipDownWithRandomDelay('eship2');
+moveEnemyShipDownWithRandomDelay('eship3');
+moveEnemyShipDownWithRandomDelay('eship4');
+moveEnemyShipDownWithRandomDelay('eship5');
+//for collison
