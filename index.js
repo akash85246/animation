@@ -48,7 +48,7 @@ document.addEventListener('keydown', (event) => {
     spaceship.style.top = spaceshipY + 'px';
 });
 // for enemy movement
-var speed =1;
+var speed =1.5;
 function moveEnemyShipDown(shipId) {
     const enemyShip = document.getElementById(shipId);
     let currentPosition = 0; 
@@ -68,7 +68,7 @@ function moveEnemyShipDown(shipId) {
 function moveEnemyShipDownWithRandomDelay(shipId) {
     setTimeout(() => {
         moveEnemyShipDown(shipId);
-    }, Math.random() * 30000); 
+    }, Math.random() * 20500); 
 }
 moveEnemyShipDownWithRandomDelay('eship1');
 moveEnemyShipDownWithRandomDelay('eship2');
