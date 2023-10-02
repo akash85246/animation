@@ -14,12 +14,14 @@ margin: 0;
 }
 .screen>.game-container>.background{
     width: 80vw;
-    height: 100%;
-    position: absolute;
+    height: 100vh;
+    position: relative;
     background-image: url('./assets/back1.jpg');
     background-repeat: repeat-y;
     background-size: cover;
     animation: moveBackground 5s linear infinite;
+    overflow: hidden;
+    padding: 0;
 }
 .screen>.menu{
     background-color: black;
@@ -28,7 +30,7 @@ margin: 0;
     list-style: none;
 }
 
-.screen .enemy{
+.screen #enemy{
     transform: rotate(180deg);
 }
 .screen .menu{
@@ -36,7 +38,7 @@ margin: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 5vh;
+    row-gap: 2vh;
     padding: 10px;
 
 }
@@ -51,13 +53,29 @@ margin: 0;
     justify-content: center;
     align-items: center;
 }
-.screen>.menu>li>button{
+.screen>.menu>.button>button{
     background-color: black;
     color: gold;
     font-size: 2vw;
     border-radius: 25px;
 }
-.screen>.menu>li>button :hover{
+.screen>.menu>.button>button:hover
+{
     background-color: gold;
     color: black;
+}
+
+.screen>.game-container #alia{
+    height: 150px;
+    width: 150px;
+    display: inline;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0, -50%);
+}
+#alia > img{
+    margin-top: 10vh;
+    height: 100%;
+    width: 100%;
 }
