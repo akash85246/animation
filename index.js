@@ -2,7 +2,7 @@
 function moveBackground() {
     const background = document.querySelector(".screen>.game-container>.background");
     var position = 0;
-    var speed = 5;
+    var speed = 2;
 
     function updateBackground() {
         position += speed;
@@ -45,7 +45,7 @@ document.addEventListener('keydown', (event) => {
     spaceship.style.top = spaceshipY + 'px';
 });
 // for enemy movement
-var speed =1.5;
+var speed =1.2;
 function moveEnemyShipDown(shipId) {
     const enemyShip = document.getElementById(shipId);
     let currentPosition = 0; 
@@ -65,7 +65,7 @@ function moveEnemyShipDown(shipId) {
 function moveEnemyShipDownWithRandomDelay(shipId) {
     setTimeout(() => {
         moveEnemyShipDown(shipId);
-    }, Math.random() * 20500); 
+    }, Math.random() * 20200); 
 }
 function enemyMove(){
 moveEnemyShipDownWithRandomDelay('eship1');
@@ -95,13 +95,15 @@ document.querySelector(".b3").addEventListener("click",function(){
 var n=0;
 var level=0;
 var hearts = 5;
+var detect=2000;
 function score(){
     setInterval(() => {
         document.getElementById("score").innerHTML=n;
         n=n+1;
         if(n%5 === 0){
             level+=1;
-            speed+=2;
+            speed+=0.05;
+            detect-=50;
             document.querySelector("h2").innerHTML="level "+level;
         }
 
@@ -138,10 +140,7 @@ function score(){
     if(((eship1_left<=myShip_left && myShip_left<=eship1_right)||(eship1_left<=myShip_right && myShip_right<=eship1_right)) && ((eship1_top<=myShip_top && myShip_top<=eship1_bottom)||(eship1_top<=myShip_bottom && myShip_bottom<=eship1_bottom)))
     {
         if (hearts > 0) {
-            const heartId = "h" + hearts;
-            const heartToRemove = document.querySelector(".heart." + heartId);
-            heartToRemove.style.display = "none";
-            hearts--;
+            heartCount();
 
             if (hearts === 0) {
                 
@@ -153,10 +152,7 @@ function score(){
     if(((eship2_left<=myShip_left && myShip_left<=eship2_right)||(eship2_left<=myShip_right && myShip_right<=eship2_right)) && ((eship2_top<=myShip_top && myShip_top<=eship2_bottom)||(eship2_top<=myShip_bottom && myShip_bottom<=eship2_bottom)))
     {
         if (hearts > 0) {
-            const heartId = "h" + hearts;
-            const heartToRemove = document.querySelector(".heart." + heartId);
-            heartToRemove.style.display = "none";
-            hearts--;
+            heartCount();
 
             if (hearts === 0) {
                 
@@ -169,10 +165,7 @@ function score(){
     if(((eship3_left<=myShip_left && myShip_left<=eship3_right)||(eship3_left<=myShip_right && myShip_right<=eship3_right)) && ((eship3_top<=myShip_top && myShip_top<=eship3_bottom)||(eship3_top<=myShip_bottom && myShip_bottom<=eship3_bottom)))
     {
         if (hearts > 0) {
-            const heartId = "h" + hearts;
-            const heartToRemove = document.querySelector(".heart." + heartId);
-            heartToRemove.style.display = "none";
-            hearts--;
+            heartCount();
 
             if (hearts === 0) {
                 
@@ -184,10 +177,7 @@ function score(){
     if(((eship4_left<=myShip_left && myShip_left<=eship4_right)||(eship4_left<=myShip_right && myShip_right<=eship4_right)) && ((eship4_top<=myShip_top && myShip_top<=eship4_bottom)||(eship4_top<=myShip_bottom && myShip_bottom<=eship4_bottom)))
     {
         if (hearts > 0) {
-            const heartId = "h" + hearts;
-            const heartToRemove = document.querySelector(".heart." + heartId);
-            heartToRemove.style.display = "none";
-            hearts--;
+            heartCount();
 
             if (hearts === 0) {
                 
@@ -199,18 +189,14 @@ function score(){
     if(((eship5_left<=myShip_left && myShip_left<=eship5_right)||(eship5_left<=myShip_right && myShip_right<=eship5_right)) && ((eship5_top<=myShip_top && myShip_top<=eship5_bottom)||(eship5_top<=myShip_bottom && myShip_bottom<=eship5_bottom)))
     {
         if (hearts > 0) {
-            const heartId = "h" + hearts;
-            const heartToRemove = document.querySelector(".heart." + heartId);
-            heartToRemove.style.display = "none";
-            hearts--;
-
+            heartCount();
             if (hearts === 0) {
                 
                 endGame();
             }
         }
     }
-}, 3000);
+}, detect);
 }
 
 function endGame() {
@@ -219,7 +205,7 @@ function endGame() {
     document.querySelector(".healthBar").style.display = "none";
     document.querySelector("#score").style.display = "none";
     n = 0;
-    speed=1.5;
+    speed=1.2;
     document.querySelector(".level").innerHTML = "Game";
     document.querySelector("#sc").innerHTML = "Over";
     document.querySelector(".b2").style.display = "none";
@@ -228,4 +214,10 @@ function endGame() {
     setTimeout(() => {
         location.reload();
     }, 2000);
+}
+function heartCount() {
+    const heartId = "h" + hearts;
+            const heartToRemove = document.querySelector(".heart." + heartId);
+            heartToRemove.style.display = "none";
+            hearts--;
 }
