@@ -1,5 +1,6 @@
 body{
     overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
 }
 .screen{
 display: grid;
@@ -23,17 +24,16 @@ margin: 0;
     overflow: hidden;
     padding: 0;
 }
-.screen>.menu{
-    background-color: black;
-    margin: 0;
-    color: gold;
-    list-style: none;
-}
+
 
 .screen #enemy{
     transition: transform 0.5s ease; 
 }
 .screen .menu{
+    background-color: black;
+    margin: 0;
+    color: gold;
+    list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,6 +56,7 @@ margin: 0;
 .screen>.menu>.button>button{
     background-color: black;
     color: gold;
+    font-family: 'Press Start 2P', cursive;
     font-size: 2vw;
     border-radius: 25px;
 }
@@ -72,8 +73,11 @@ margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
+    transform: translate(0, 0);
+}
+.game_over{
+    background-color: rgba(244, 3, 3,0.5);
+    
 }
 #alia > img{
     height: 100%;
@@ -92,7 +96,7 @@ margin: 0;
     width: 100px;
     left: 100px;
     z-index: 1001;
-    animation: spaceShip infinite linear 3s;
+    /* animation: spaceShip infinite linear 3s; */
 }
 #object2{
     display: grid;
@@ -136,6 +140,6 @@ margin: 0;
     height: 100%;
 }
 
-.paused-background {
+/* .paused-background {
     animation-play-state: paused;
-}
+} */

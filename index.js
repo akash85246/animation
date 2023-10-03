@@ -11,9 +11,6 @@ function moveBackground() {
     }
     updateBackground();
 }
-
-// 
-
 // alias ship movement
 
 const spaceship = document.querySelector('#alia');
@@ -62,7 +59,7 @@ function moveEnemyShipDown(shipId) {
             enemyShip.style.transform = 'translateY(0)';
             moveEnemyShipDown(shipId);
         }
-    }, 20); 
+    }, 10); 
 }
 
 function moveEnemyShipDownWithRandomDelay(shipId) {
@@ -97,84 +94,138 @@ document.querySelector(".b3").addEventListener("click",function(){
 })
 var n=0;
 var level=0;
+var hearts = 5;
 function score(){
-setInterval(() => {
-    document.getElementById("score").innerHTML=n;
-    n=n+1;
-    if(n%5 === 0){
-        level+=1;
-        document.querySelector("h2").innerHTML="level "+level;
-    }
+    setInterval(() => {
+        document.getElementById("score").innerHTML=n;
+        n=n+1;
+        if(n%5 === 0){
+            level+=1;
+            speed+=2;
+            document.querySelector("h2").innerHTML="level "+level;
+        }
 
-    var eship1_left=(document.querySelector("#eship1").getBoundingClientRect().left);
-    var eship1_right=(document.querySelector("#eship1").getBoundingClientRect().right);
-    var eship1_top=(document.querySelector("#eship1").getBoundingClientRect().top);
-    var eship1_bottom=(document.querySelector("#eship1").getBoundingClientRect().bottom);
+    var eship1_left=Math.abs(document.querySelector("#eship1").getBoundingClientRect().left);
+    var eship1_right=Math.abs(document.querySelector("#eship1").getBoundingClientRect().right);
+    var eship1_top=Math.abs(document.querySelector("#eship1").getBoundingClientRect().top);
+    var eship1_bottom=Math.abs(document.querySelector("#eship1").getBoundingClientRect().bottom);
     
-    var eship2_left=(document.querySelector("#eship2").getBoundingClientRect().left);
-    var eship2_right=(document.querySelector("#eship2").getBoundingClientRect().right);
-    var eship2_top=(document.querySelector("#eship2").getBoundingClientRect().top);
-    var eship2_bottom=(document.querySelector("#eship2").getBoundingClientRect().bottom);
+    var eship2_left=Math.abs(document.querySelector("#eship2").getBoundingClientRect().left);
+    var eship2_right=Math.abs(document.querySelector("#eship2").getBoundingClientRect().right);
+    var eship2_top=Math.abs(document.querySelector("#eship2").getBoundingClientRect().top);
+    var eship2_bottom=Math.abs(document.querySelector("#eship2").getBoundingClientRect().bottom);
 
-    var eship3_left=(document.querySelector("#eship3").getBoundingClientRect().left);
-    var eship3_right=(document.querySelector("#eship3").getBoundingClientRect().right);
-    var eship3_top=(document.querySelector("#eship3").getBoundingClientRect().top);
-    var eship3_bottom=(document.querySelector("#eship3").getBoundingClientRect().bottom);
+    var eship3_left=Math.abs(document.querySelector("#eship3").getBoundingClientRect().left);
+    var eship3_right=Math.abs(document.querySelector("#eship3").getBoundingClientRect().right);
+    var eship3_top=Math.abs(document.querySelector("#eship3").getBoundingClientRect().top);
+    var eship3_bottom=Math.abs(document.querySelector("#eship3").getBoundingClientRect().bottom);
 
-    var eship4_left=(document.querySelector("#eship4").getBoundingClientRect().left);
-    var eship4_right=(document.querySelector("#eship4").getBoundingClientRect().right);
-    var eship4_top=(document.querySelector("#eship4").getBoundingClientRect().top);
-    var eship4_bottom=(document.querySelector("#eship4").getBoundingClientRect().bottom);
+    var eship4_left=Math.abs(document.querySelector("#eship4").getBoundingClientRect().left);
+    var eship4_right=Math.abs(document.querySelector("#eship4").getBoundingClientRect().right);
+    var eship4_top=Math.abs(document.querySelector("#eship4").getBoundingClientRect().top);
+    var eship4_bottom=Math.abs(document.querySelector("#eship4").getBoundingClientRect().bottom);
 
-    var eship5_left=(document.querySelector("#eship5").getBoundingClientRect().left);
-    var eship5_right=(document.querySelector("#eship5").getBoundingClientRect().right);
-    var eship5_top=(document.querySelector("#eship5").getBoundingClientRect().top);
-    var eship5_bottom=(document.querySelector("#eship5").getBoundingClientRect().bottom);
+    var eship5_left=Math.abs(document.querySelector("#eship5").getBoundingClientRect().left);
+    var eship5_right=Math.abs(document.querySelector("#eship5").getBoundingClientRect().right);
+    var eship5_top=Math.abs(document.querySelector("#eship5").getBoundingClientRect().top);
+    var eship5_bottom=Math.abs(document.querySelector("#eship5").getBoundingClientRect().bottom);
 
-    var myShip_left=(document.querySelector("#alia").getBoundingClientRect().left);
-    var myShip_right=(document.querySelector("#alia").getBoundingClientRect().right);
-    var myShip_top=(document.querySelector("#alia").getBoundingClientRect().top);
-    var myShip_bottom=(document.querySelector("#alia").getBoundingClientRect().bottom);
+    var myShip_left=Math.abs(document.querySelector("#alia").getBoundingClientRect().left);
+    var myShip_right=Math.abs(document.querySelector("#alia").getBoundingClientRect().right);
+    var myShip_top=Math.abs(document.querySelector("#alia").getBoundingClientRect().top);
+    var myShip_bottom=Math.abs(document.querySelector("#alia").getBoundingClientRect().bottom);
 
-    if(((eship1_left<myShip_left && myShip_left<eship1_right)||(eship1_left<myShip_right && myShip_right<eship1_right)) && ((eship1_top<myShip_top && myShip_top<eship1_bottom)||(eship1_top<myShip_bottom && myShip_bottom<eship1_bottom)))
+    if(((eship1_left<=myShip_left && myShip_left<=eship1_right)||(eship1_left<=myShip_right && myShip_right<=eship1_right)) && ((eship1_top<=myShip_top && myShip_top<=eship1_bottom)||(eship1_top<=myShip_bottom && myShip_bottom<=eship1_bottom)))
     {
-        setTimeout(() => {
-            alert("Game Over");
-        })
-        location.reload();
+        if (hearts > 0) {
+            const heartId = "h" + hearts;
+            const heartToRemove = document.querySelector(".heart." + heartId);
+            heartToRemove.style.display = "none";
+            hearts--;
+
+            if (hearts === 0) {
+                
+                endGame();
+            }
+        }
     }
     else
-    if(((eship2_left<myShip_left && myShip_left<eship2_right)||(eship2_left<myShip_right && myShip_right<eship2_right)) && ((eship2_top<myShip_top && myShip_top<eship2_bottom)||(eship2_top<myShip_bottom && myShip_bottom<eship2_bottom)))
+    if(((eship2_left<=myShip_left && myShip_left<=eship2_right)||(eship2_left<=myShip_right && myShip_right<=eship2_right)) && ((eship2_top<=myShip_top && myShip_top<=eship2_bottom)||(eship2_top<=myShip_bottom && myShip_bottom<=eship2_bottom)))
     {
-        setTimeout(() => {
-            alert("Game Over");
-        })
-        location.reload();
+        if (hearts > 0) {
+            const heartId = "h" + hearts;
+            const heartToRemove = document.querySelector(".heart." + heartId);
+            heartToRemove.style.display = "none";
+            hearts--;
+
+            if (hearts === 0) {
+                
+                endGame();
+            }
+        }
+        
     }
     else
-    if(((eship3_left<myShip_left && myShip_left<eship3_right)||(eship3_left<myShip_right && myShip_right<eship3_right)) && ((eship3_top<myShip_top && myShip_top<eship3_bottom)||(eship3_top<myShip_bottom && myShip_bottom<eship3_bottom)))
+    if(((eship3_left<=myShip_left && myShip_left<=eship3_right)||(eship3_left<=myShip_right && myShip_right<=eship3_right)) && ((eship3_top<=myShip_top && myShip_top<=eship3_bottom)||(eship3_top<=myShip_bottom && myShip_bottom<=eship3_bottom)))
     {
-        setTimeout(() => {
-            alert("Game Over");
-        })
-        location.reload();
+        if (hearts > 0) {
+            const heartId = "h" + hearts;
+            const heartToRemove = document.querySelector(".heart." + heartId);
+            heartToRemove.style.display = "none";
+            hearts--;
+
+            if (hearts === 0) {
+                
+                endGame();
+            }
+        }
     }
     else
-    if(((eship4_left<myShip_left && myShip_left<eship4_right)||(eship4_left<myShip_right && myShip_right<eship4_right)) && ((eship4_top<myShip_top && myShip_top<eship4_bottom)||(eship4_top<myShip_bottom && myShip_bottom<eship4_bottom)))
+    if(((eship4_left<=myShip_left && myShip_left<=eship4_right)||(eship4_left<=myShip_right && myShip_right<=eship4_right)) && ((eship4_top<=myShip_top && myShip_top<=eship4_bottom)||(eship4_top<=myShip_bottom && myShip_bottom<=eship4_bottom)))
     {
-        setTimeout(() => {
-            alert("Game Over");
-        })
-        location.reload();
+        if (hearts > 0) {
+            const heartId = "h" + hearts;
+            const heartToRemove = document.querySelector(".heart." + heartId);
+            heartToRemove.style.display = "none";
+            hearts--;
+
+            if (hearts === 0) {
+                
+                endGame();
+            }
+        }
     }
     else
-    if(((eship5_left<myShip_left && myShip_left<eship5_right)||(eship5_left<myShip_right && myShip_right<eship5_right)) && ((eship5_top<myShip_top && myShip_top<eship5_bottom)||(eship5_top<myShip_bottom && myShip_bottom<eship5_bottom)))
+    if(((eship5_left<=myShip_left && myShip_left<=eship5_right)||(eship5_left<=myShip_right && myShip_right<=eship5_right)) && ((eship5_top<=myShip_top && myShip_top<=eship5_bottom)||(eship5_top<=myShip_bottom && myShip_bottom<=eship5_bottom)))
     {
-        setTimeout(() => {
-            alert("Game Over");
-        })
-        location.reload();
+        if (hearts > 0) {
+            const heartId = "h" + hearts;
+            const heartToRemove = document.querySelector(".heart." + heartId);
+            heartToRemove.style.display = "none";
+            hearts--;
+
+            if (hearts === 0) {
+                
+                endGame();
+            }
+        }
     }
 }, 3000);
 }
 
+function endGame() {
+    var element = document.getElementsByClassName("menu");
+    element[0].style.background = "#921224";
+    document.querySelector(".healthBar").style.display = "none";
+    document.querySelector("#score").style.display = "none";
+    n = 0;
+    speed=1.5;
+    document.querySelector(".level").innerHTML = "Game";
+    document.querySelector("#sc").innerHTML = "Over";
+    document.querySelector(".b2").style.display = "none";
+    document.querySelector(".b1").style.background = "#921224";
+    document.querySelector(".b3").style.background = "#921224";
+    setTimeout(() => {
+        location.reload();
+    }, 2000);
+}
