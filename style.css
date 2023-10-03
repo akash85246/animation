@@ -20,7 +20,7 @@ margin: 0;
     background-image: url('./assets/back1.jpg');
     background-repeat: repeat-y;
     background-size: cover;
-    animation: moveBackground 5s linear infinite;
+    animation: 5s linear infinite;
     overflow: hidden;
     padding: 0;
 }
@@ -59,6 +59,7 @@ margin: 0;
     font-family: 'Press Start 2P', cursive;
     font-size: 2vw;
     border-radius: 25px;
+    padding: 15px;
 }
 .screen>.menu>.button>button:hover
 {
@@ -73,7 +74,7 @@ margin: 0;
     position: absolute;
     top: 50%;
     left: 45%;
-    transform: translate(0, 0);
+    transform: translate(0, -50%);
 }
 
 #alia > img{
@@ -93,7 +94,6 @@ margin: 0;
     width: 100px;
     left: 100px;
     z-index: 1001;
-    /* animation: spaceShip infinite linear 3s; */
 }
 #object2{
     display: grid;
@@ -136,7 +136,3 @@ margin: 0;
     width: 100%;
     height: 100%;
 }
-
-/* .paused-background {
-    animation-play-state: paused;
-} */
