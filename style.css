@@ -38,7 +38,7 @@ margin: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 2vh;
+    row-gap: 0.5vh;
     padding: 10px;
 
 }
@@ -72,13 +72,10 @@ margin: 0;
     display: inline;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 45%;
     transform: translate(0, 0);
 }
-.game_over{
-    background-color: rgba(244, 3, 3,0.5);
-    
-}
+
 #alia > img{
     height: 100%;
     width: 100%;
@@ -86,7 +83,7 @@ margin: 0;
 
 #enemy{
     display: flex;
-    column-gap: 50px;
+    column-gap: 10px;
 }
 #object1{
     display: grid;
